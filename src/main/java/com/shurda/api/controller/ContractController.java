@@ -1,6 +1,7 @@
 package com.shurda.api.controller;
 
 import com.shurda.api.entity.Contract;
+import com.shurda.api.dto.ContractDTO;
 import com.shurda.api.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +26,7 @@ public class ContractController {
 
     @RequestMapping(value = "/contracts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Page<Contract>> getFilterContracts(Pageable pageable,
+    public ResponseEntity<ContractDTO> getFilterContracts(Pageable pageable,
                                                              @NotBlank @RequestParam(value = "nameFilter") String nameFilter) {
 
         List<Contract> contracts = contractService.getFilterContract(nameFilter);
@@ -37,7 +38,7 @@ public class ContractController {
         int end = (start + pageable.getPageSize()) > contracts.size() ? contracts.size() : (start + pageable.getPageSize());
         Page<Contract> pages = new PageImpl<>(contracts.subList(start, end), pageable, contracts.size());
 
-        return new ResponseEntity<>(pages, HttpStatus.OK);
+        return new ResponseEntity<>(new ContractDTO(pages.getContent()), HttpStatus.OK);
 
     }
 

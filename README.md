@@ -23,5 +23,6 @@ Use page param for pagination response.
 ### For example 
 `http://localhost:9080/hello/contacts?nameFilter=^B.*$&page=1&size=30`
 
-[![Build Status] (https://travis-ci.com/AndreyShurda/contractFilter.svg?branch=master) (https://travis-ci.com/AndreyShurda/contractFilter)
-
+<p align="center">
+<a href="https://travis-ci.com/AndreyShurda/contractFilter"><img src="https://travis-ci.com/AndreyShurda/contractFilter.svg?branch=master"><alt="Build Status"></a>
+</p>
